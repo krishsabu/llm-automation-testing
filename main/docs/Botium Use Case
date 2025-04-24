@@ -1,1 +1,68 @@
 
+# 1. Botium Main Script (`runTests.js` or similar)
+
+### **Purpose**
+This script is the **main test runner** for your conversational AI automation. It loads test scripts, executes them against your chatbot using Botium, logs detailed step-by-step results, and calculates semantic similarity between expected and actual bot responses using a Python script.
+
+---
+
+### **Key Components**
+
+#### **A. Imports and Setup**
+- **Node modules:** For file operations, path management, spawning subprocesses, logging, and colorized terminal output.
+- **Botium:** For driving and interacting with your chatbot.
+- **Report Generator:** For creating test result reports.
+
+#### **B. Utility Functions**
+- **`createTestHeader`/`createTestFooter`:**  
+  Pretty-prints test case start/end banners in the console.
+- **`logStepResult`:**  
+  Colorfully logs each user/bot step, similarity score, and pass/fail status.
+- **`extractBotResponse`:**  
+  Extracts the actual text response from the bot’s message object, handling various message formats and fallbacks.
+- **`calculateSemanticSimilarity`:**  
+  Calls a Python script (`semantic_similarity.py`) as a subprocess, passing it two strings, and receives a similarity score (float) in return.
+
+#### **C. Configuration and Test Script Loading**
+- **Loads `botium.json`:**  
+  The connection/config for your chatbot.
+- **Loads `testScriptsConfig.json`:**  
+  Specifies which test scripts to run (enables/disables via config).
+- **Loads all enabled test scripts** from the `convos` folder, flattening them into a single list.
+
+#### **D. Logging Setup**
+- **Creates a log directory and file** for results, with timestamped filenames.
+- **`winston` logger:**  
+  Logs both to file and console, in JSON format.
+
+#### **E. Test Execution (`runTests` function)**
+- **Initializes Botium driver.**
+- **For each test script:**
+  - Starts a new Botium container/session.
+  - Loops through each step (user or bot):
+    - If `user`, sends input to the chatbot.
+    - If `bot`, waits for the bot's response, extracts the text, and:
+      - For each expected response, calculates semantic similarity (by calling the Python script).
+      - Marks the step as passed if similarity > 0.6.
+    - Logs all steps and results.
+  - Collects results and prints a summary banner.
+  - Stops the Botium container.
+- **After all tests:**  
+  Calls `generateReports` to create human-readable reports (e.g., HTML, JSON).
+
+#### **F. Error Handling**
+- Catches and logs errors at every major step (loading configs, running steps, semantic similarity, etc.).
+
+---
+
+### **In Summary**
+- **Loads test cases** (from JSON).
+- **Runs them against your chatbot** (using Botium).
+- **Checks how similar the bot’s answers are** to what you expect (using a Python-based semantic similarity model).
+- **Logs and reports** everything in a detailed, color-coded, and structured way.
+
+---
+
+
+
+**Let me know if you want diagrams, code comments, or suggestions for improvements!**
