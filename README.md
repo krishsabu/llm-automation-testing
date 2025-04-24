@@ -112,12 +112,6 @@ Refer to [PyRIT documentation](https://github.com/microsoft/pyrit) for details o
 
 ---
 
-## Contributing
-
-Contributions are welcome!  
-Please open issues or submit pull requests for bug fixes, new features, or additional test scenarios.
-
----
 
 ## License
 
