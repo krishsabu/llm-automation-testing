@@ -122,7 +122,7 @@ This project is licensed under the [MIT License](LICENSE).
 ## Acknowledgements
 
 - [Botium](https://github.com/codeforequity-at/botium-core) for chatbot testing
-- [PyRIT](https://github.com/microsoft/pyrit) for LLM content safety testing
+- [PyRIT]([https://github.com/microsoft/pyrit](https://github.com/Azure/PyRIT)) for LLM content safety testing
 
 ---
 
