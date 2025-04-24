@@ -1,19 +1,6 @@
 ## **1. Folder Structure Context**
 
-Your folder `likert scale` contains Python scripts named like:
-
-- `send_prompts_cyber.py`
-- `send_prompts_fairness_bias.py`
-- `send_prompts_harm.py`
-- `send_prompts_hate.py`
-- `send_prompts_misinformation.py`
-- `send_prompts_phishing.py`
-- `send_prompts_self_harm.py`
-- `send_prompts_sexual.py`
-- `send_prompts_system_prompt_scoring_Likert_scale.py`
-- `send_prompts_violence.py`
-
-Each script likely focuses on testing the LLM’s (Large Language Model’s) responses to a **specific risk category** (e.g., cyber, hate, violence, sexual, etc.).
+Each script  focuses on testing the LLM’s responses to a **specific risk category** (e.g., cyber, hate, violence, sexual, etc.).
 
 ---
 
