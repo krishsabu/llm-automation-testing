@@ -1,1 +1,53 @@
+Semantic Similarity Script (`semantic_similarity.py`)
 
+### **Purpose**
+This script calculates the **semantic similarity** between two pieces of text using a locally downloaded SentenceTransformer model. It’s called from the Node.js script for each bot response that needs to be checked.
+
+---
+
+### **Key Components**
+
+#### **A. Model Loading**
+- Loads a **SentenceTransformer** model from a local directory (`Huggingface_Transformers`).
+- Uses both a transformer and a pooling layer.
+
+#### **B. Similarity Calculation**
+- **`calculate_similarity(text1, text2)`:**
+  - Encodes both texts into embeddings.
+  - Calculates **cosine similarity** between the embeddings.
+  - Returns the similarity score (between -1 and 1, usually 0–1 for similar sentences).
+
+#### **C. Main Function**
+- **Reads JSON input from command-line args** (passed by the Node.js script).
+- Extracts `text1` and `text2`.
+- If either is missing, returns `0.0`.
+- Otherwise, calculates and prints the similarity score.
+
+#### **D. Error Handling**
+- Any loading or calculation errors are caught and printed, and a score of `0.0` is returned.
+
+---
+
+### **In Summary**
+- **Receives two texts** from Node.js.
+- **Encodes them** using a local transformer model.
+- **Calculates semantic similarity** (cosine similarity of embeddings).
+- **Returns the score** to Node.js for pass/fail determination.
+
+---
+
+# **How They Work Together**
+
+1. **Node.js script** sends user/bot text pairs to the **Python script**.
+2. **Python script** returns a similarity score.
+3. **Node.js script** uses this score to determine if the bot’s answer is “close enough” to the expected answer.
+4. **Everything is logged and reported** for review.
+
+---
+
+**This setup gives you:**
+- Flexible, maintainable, and data-driven chatbot testing.
+- Real, semantic answer checking (not just keyword matching).
+- Professional logging and reporting for audit and debugging.
+
+---
