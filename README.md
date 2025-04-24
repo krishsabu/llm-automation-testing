@@ -6,21 +6,6 @@ A comprehensive automation testing suite for conversational AI projects, featuri
 - **Botium Framework Integration** for automated chatbot interaction testing
 - **PyRIT** for content safety and red-teaming of Large Language Models (LLMs)
 
----
-
-## Table of Contents
-
-- [Overview](#overview)
-- [Project Structure](#project-structure)
-- [Features](#features)
-- [Getting Started](#getting-started)
-- [Botium Testing](#botium-testing)
-- [Content Safety Testing with PyRIT](#content-safety-testing-with-pyrit)
-- [Contributing](#contributing)
-- [License](#license)
-
----
-
 ## Overview
 
 This repository contains automation projects for testing conversational AI systems.
